@@ -45,7 +45,7 @@ namespace API.Controllers
         [HttpPut("{id:int}")]
         public async Task<ActionResult> UpdateProduct(int id, Product product)
         {
-            if (product.Id != id || !ProductExist(id))
+            if (product.Id != id || !ProductExists(id))
                 return BadRequest("Cannot update this product");
 
             context.Entry(product).State = EntityState.Modified;
@@ -69,7 +69,7 @@ namespace API.Controllers
             return NoContent();
         }
 
-        private bool ProductExist(int id)
+        private bool ProductExists(int id)
         {
             return context.Products.Any(x => x.Id == id);
         }

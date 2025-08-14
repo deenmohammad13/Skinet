@@ -32,6 +32,18 @@ namespace Infrastructure.Data
             return await context.Products.ToListAsync();
         }
 
+        public async Task<IReadOnlyList<string>> GetBrandsAsync()
+        {
+            return await context.Products.Select(p => p.Brand)
+                .Distinct()
+                .ToListAsync();
+        }
+        public async Task<IReadOnlyList<string>> GetTypesAsync()
+        {
+            return await context.Products.Select(p => p.Brand)
+                .Distinct()
+                .ToListAsync();
+        }
         public bool ProductExists(int id)
         {
             return context.Products.Any(x => x.Id == id);

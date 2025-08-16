@@ -21,6 +21,11 @@ namespace Infrastructure.Data
             return context.Set<T>().Any(x => x.Id== id);
         }
 
+        public async Task<T?> GetEntity(ISpecifications<T> spec)
+        {
+            return await ApplySpecifications(spec).FirstOrDefaultAsync();
+        }
+
         public async Task<T?> GetIdByAsync(int id)
         {
             return await context.Set<T>().FindAsync(id);
@@ -29,6 +34,11 @@ namespace Infrastructure.Data
         public async Task<IReadOnlyList<T>> ListAllAsync()
         {
             return await context.Set<T>().ToListAsync();
+        }
+
+        public async Task<IReadOnlyList<T>> ListAsync(ISpecifications<T> spec)
+        {
+            return await ApplySpecifications(spec).ToListAsync();
         }
 
         public void Remove(T entity)
@@ -45,6 +55,11 @@ namespace Infrastructure.Data
         {
            context.Set<T>().Attach(entity);
             context.Entry(entity).State = EntityState.Modified;
+        }
+
+        private IQueryable<T> ApplySpecifications(ISpecifications<T> spec)
+        {
+            return SpecificationEvaluator<T>.GetQuery(context.Set<T>().AsQueryable(), spec);
         }
     }
 }

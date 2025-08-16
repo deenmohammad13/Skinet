@@ -11,6 +11,8 @@ namespace Core.Interfaces
     {
         Task<T?> GetIdByAsync(int id);
         Task<IReadOnlyList<T>> ListAllAsync();
+        Task<T?> GetEntity(ISpecifications<T> spec);
+        Task<IReadOnlyList<T>> ListAsync(ISpecifications<T> spec);
         void Add(T entity);
         void Update(T entity);
         void Remove(T entity);

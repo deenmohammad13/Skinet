@@ -16,6 +16,14 @@ namespace Infrastructure.Data
             {
                 query = query.Where(spec.Criteria); // X => X.Brand == brand
             }
+            if (spec.OrderBy != null)
+            {
+                query = query.OrderBy(spec.OrderBy); // x => x.Price
+            }
+            if (spec.OrderByDescending != null)
+            {
+                query = query.OrderByDescending(spec.OrderByDescending); // x => x.Price
+            }
             return query;
         }
     }

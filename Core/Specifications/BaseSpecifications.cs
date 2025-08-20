@@ -29,4 +29,15 @@ namespace Core.Specifications
             OrderByDescending = orderByDescExpression;
         }
     }
+
+    public class BaseSpecifications<T, TResult>(Expression<Func<T, bool>> criteria)
+        : BaseSpecifications<T>(criteria), ISpecifications<T, TResult>
+    {
+        public Expression<Func<T, TResult>>? Select { get; private set; }
+
+        protected void AddSelect(Expression<Func<T, TResult>> selectExpression)
+        {
+            Select = selectExpression;
+        }
+    }
 }

@@ -13,6 +13,8 @@ namespace Core.Interfaces
 
         Expression<Func<T, object>>? OrderBy { get; }
         Expression<Func<T, object>>? OrderByDescending { get; }
+
+        bool IsDistinct { get; }
     }
 
     public interface ISpecifications<T, TResult> : ISpecifications<T>

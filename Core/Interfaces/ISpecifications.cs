@@ -15,6 +15,10 @@ namespace Core.Interfaces
         Expression<Func<T, object>>? OrderByDescending { get; }
 
         bool IsDistinct { get; }
+        int Skip { get; }
+        int Take { get; }
+        
+        bool IsPagingEnabled { get; }
     }
 
     public interface ISpecifications<T, TResult> : ISpecifications<T>

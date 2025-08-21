@@ -8,7 +8,7 @@ namespace Core.Specifications
 {
     public class ProductSpecParams
     {
-		private List<string> _brands = [];
+       private List<string> _brands = [];
 
 		public List<string> Brands
 		{

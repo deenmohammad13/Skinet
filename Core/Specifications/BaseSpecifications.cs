@@ -40,6 +40,13 @@ namespace Core.Specifications
         {
             IsDistinct = true;
         }
+
+        protected void ApplyPaging(int skip, int take)
+        {
+            Skip = skip;
+            Take = take;
+            IsPagingEnabled = true;
+        }
     }
 
     public class BaseSpecifications<T, TResult>(Expression<Func<T, bool>> criteria)

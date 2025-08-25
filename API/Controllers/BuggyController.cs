@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using API.DTOs;
+using Core.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
@@ -29,7 +31,7 @@ namespace API.Controllers
         }
 
         [HttpPost("validationerror")]
-        public IActionResult GetValidationError()
+        public IActionResult GetValidationError(CreateProductDto product)
         {
             return Ok();
         }

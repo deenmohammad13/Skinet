@@ -9,7 +9,7 @@ import { FiltersDialogComponent } from './filters-dialog/filters-dialog.componen
 import { MatListOption, MatSelectionList, MatSelectionListChange } from '@angular/material/list';
 import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 import { ShopParams } from '../../shared/Models/ShopParams';
-import {MatPaginator} from '@angular/material/paginator';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import { Pagination } from '../../shared/Models/Pagination';
 
 @Component({
@@ -56,7 +56,7 @@ export class ShopComponent implements  OnInit {
         error: error => console.log(error)
       })
   }
-  handlePageEvent(event: any){
+  handlePageEvent(event: PageEvent){
     this.shopParams.pageNumber = event.pageIndex + 1;
     this.shopParams.pageSize = event.pageSize;
     this.getProducts();

@@ -6,10 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
-    public class AppDbContext(DbContextOptions options) : DbContext(options)
+    public class AppDbContext(DbContextOptions options) : IdentityDbContext<AppUser>(options)
     {
         public DbSet<Product> Products { get; set; }
 
